@@ -122,13 +122,25 @@
 
 ### Скрипт Bash (.bat)
 
+Скрипт [script.bat](./script.bat)
+
+Отображение его работы с static параметрами:
+
 ![Скриншот bat](images/bat0.png)
+
+Результат в ipconfig:
 
 ![Скриншот bat](images/bat1.png)
 
 ### Скрипт Powershell (.ps1)
 
+Скрипт [script.ps1](./script.ps1)
+
+Отображение его работы с static параметрами:
+
 ![Скриншот ps1](images/ps0.png)
+
+Результат в ipconfig:
 
 ![Скриншот ps1](images/ps1.png)
 
