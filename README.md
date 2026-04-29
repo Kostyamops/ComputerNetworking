@@ -12,6 +12,7 @@
 
 ![Свойства адаптера 1](images/screen1.png)
 ![Свойства адаптера 2](images/screen2.png)
+
 *(скриншот 2 как продолжение, из-за непоместившегося компонента)*
 
 * **Клиент для сетей Microsoft** - позволяет компьютеру получать доступ к ресурсам (файлам и принтерам) других компьютеров в сети Windows.
@@ -19,7 +20,9 @@
 * **Протокол TCP/IPv4** - основной протокол передачи в современных сетях.
 
 ### Отключение доступа по SMB
+
 ![Свойства адаптера 2](images/smb.png)
+
 Для защиты от внешнего доступа необходимо снять галочку со «Службы доступа к файлам и принтерам» в свойствах адаптера. Это закроет порты 139 и 445, через которые работает протокол SMB.
 
 ## 2. IP-конфигурация
@@ -35,60 +38,82 @@
 
 ## 3. Команда ping
 Команда используется для проверки подключения к определенным ресурсам (обмен пакетов, задержка и т.п.).
+
 ![ipconfig all](images/ping0.png)
+
 * `ping google.com` - стандартная команда, отправляет 4 пакета по 32 байта каждый.
 
 ![ipconfig all](images/ping1.png)
+
 * `ping -n 20 google.com` - количество пакетов.
 
 ![ipconfig all](images/ping2.png)
+
 * `ping -w 1000 google.com` - допустимое ожидание ответа.
 
 ![ipconfig all](images/ping3.png)
+
 * `ping -l 1000 google.com` - задаем объем пакета в байтах.
 
 ![ipconfig all](images/ping4.png)
+
 * `ping -t google.com` - будет работать пока не остановить, после завершения отображает статистику.
 
 ## 4. Команда tracert
 На виртуальной машине весь трафик идет через материнскую машину (хост) и как следствие не видит весь маршрут “хопов”.
+
 ![ipconfig all](images/tracert0.png)
+
 * `tracert google.com` - стандартная команда.
 
 ![ipconfig all](images/tracert1.png)
+
 * `tracert -h 5 google.com` - допустимое количество хопов.
 
 **На хосте (не виртуальной машине):**
+
 ![tracert host](images/tracert2.png)
+
 * `tracert google.com` - стандартная команда.
 
 ![tracert host](images/tracert3.png)
+
 * `tracert -w 2000 google.com` - задаем допустимое время ожидания в мс.
 
 ## 5. Команда net
+
 ![tracert host](images/netview.png)
+
 * **net view** - список компьютеров. Выдает ошибку 6118. Пришел к заключению, что команда “выпиливается” службами безопасности.
 
 ![tracert host](images/netuse.png)
+
 * **net use** - подключение дисков. Проверка подключения через `IPC$` и `C$`.
 
 ![tracert host](images/netshare.png)
+
 * **net share** - расшаренные ресурсы. Сервер SMB активен.
 
 ![tracert host](images/netuser.png)
+
 * **net user** - управление пользователями (добавление `LabTest /add`).
 
 ![tracert host](images/netsession.png)
+
 * **net session** - активные подключения к самому себе (127.0.0.1).
 
 ![tracert host](images/netlocalgroup.png)
+
 * **net localgroup** - группы (Администраторы).
 
 ![tracert host](images/netstatistics.png)
+
 * **net statistics** - отображение статистики `workstation` и `server`.
 
 ## 6. DNS
+
 ![tracert host](images/dns.png)
+
 * **DNS-серверы** отвечает за доменную базу - связь доменов и ip адресов серверов. Сервер 8.8.8.8 принадлежит Google.
 * **Основной DNS-суффикс** указывает на принадлежность к конкретному домену.
 * **DNS-суффикс подключения** - домен провайдера или роутера.
@@ -96,13 +121,20 @@
 ## 7. Скрипты автоматизации
 
 ### Скрипт Bash (.bat)
+
 ![Скриншот bat](images/bat0.png)
+
 ![Скриншот bat](images/bat1.png)
+
 ### Скрипт Powershell (.ps1)
+
 ![Скриншот ps1](images/ps0.png)
+
 ![Скриншот ps1](images/ps1.png)
+
 **Использование DHCP:**
 После возврата в автоматическое назначение изменились параметры IPv4, шлюз и DNS.
+
 ![DHCP result](images/result.png)
 
 ---
