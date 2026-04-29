@@ -2,21 +2,26 @@
 
 Get-NetAdapter | select Name, InterfaceDescription, Status, Speed | ft -AutoSize
 
-$n = Read-Host "Enter Adapter Name"
+Write-Host "Adapter Name:"
+$n = Read-Host
 
-$m = Read-Host "1 - DHCP, 2 - Static"
+Write-Host "1 - DHCP, 2 - Static:"
+$m = Read-Host
 
 if ($m -eq "1") {
     Set-NetIPInterface -InterfaceAlias $n -DHCP Enabled
     Set-DnsClientServerAddress -InterfaceAlias $n -ResetServerAddresses
-    Write-Host "OK: DHCP is ON"
+    Write-Host "OK: DHCP"
 } else {
-    $ip = Read-Host "IP"
-    $gw = Read-Host "Gateway"
-    $dns = Read-Host "DNS"
+    Write-Host "IP:"
+    $ip = Read-Host
+    Write-Host "GW:"
+    $gw = Read-Host
+    Write-Host "DNS:"
+    $dns = Read-Host
     
     New-NetIPAddress -InterfaceAlias $n -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
     Set-DnsClientServerAddress -InterfaceAlias $n -ServerAddresses $dns
-    Write-Host "OK: Static IP is set"
+    Write-Host "OK: Static"
 }
 pause
