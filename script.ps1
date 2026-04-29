@@ -1,3 +1,5 @@
+[Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding("utf-8")
+
 Get-NetAdapter | select Name, InterfaceDescription, Status, Speed | ft -AutoSize
 
 $n = Read-Host "Введите имя адаптера (из колонки Name)"
