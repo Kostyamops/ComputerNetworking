@@ -19,6 +19,9 @@ if ($m -eq "1") {
     $gw = Read-Host
     Write-Host "DNS:"
     $dns = Read-Host
+
+    Remove-NetIPAddress -InterfaceAlias $n -Confirm:$false -ErrorAction SilentlyContinue
+    Remove-NetRoute -InterfaceAlias $n -Confirm:$false -ErrorAction SilentlyContinue
     
     New-NetIPAddress -InterfaceAlias $n -IPAddress $ip -PrefixLength 24 -DefaultGateway $gw
     Set-DnsClientServerAddress -InterfaceAlias $n -ServerAddresses $dns
