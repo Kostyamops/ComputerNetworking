@@ -1,4 +1,4 @@
-[Console]::OutputEncoding = [System.Text.Encoding]::GetEncoding("utf-8")
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 
 Get-NetAdapter | select Name, InterfaceDescription, Status, Speed | ft -AutoSize
 
